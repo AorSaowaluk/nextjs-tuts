@@ -829,6 +829,11 @@
     "@types/mime" "*"
     "@types/node" "*"
 
+"@types/uuid4@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/@types/uuid4/-/uuid4-2.0.3.tgz"
+  integrity sha512-/fyn8jzKzeL/wci7GOaz8TPjKapD+WJUBUCr/ED2xcUcx5fA9rZH2fDZiV2Z/a+040mp5Zi3dgIi/Vey/uQBxw==
+
 "@typescript-eslint/parser@^5.4.2 || ^6.0.0":
   version "6.21.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-6.21.0.tgz"

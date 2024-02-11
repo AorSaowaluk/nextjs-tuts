@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { toyState, loadState } from '../store'
 import { Toy } from '../interface'
 import { toast } from 'react-hot-toast'
-import {v4 as uuidv4} from 'uuid';
+import uuid4 from "uuid4";
 
 import * as firebase from '@/method/firebase'
 
@@ -27,7 +27,7 @@ const Form = () => {
     const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
         console.log(data)
         setLoad(true)
-        const getIDs = uuidv4()
+        const getIDs = uuid()
         const parcel = {
             id: getIDs,
             ...data
