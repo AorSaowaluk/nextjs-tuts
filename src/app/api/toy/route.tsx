@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { toys } from '../../form/static'
 
+
 export async function GET() {
   return NextResponse.json(toys);
 }

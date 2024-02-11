@@ -5,7 +5,7 @@ import 'firebase/storage';
 
 import { Toy } from '../app/form/interface'
 
-// PASTE YOUR FIREBASE CONFIG
+//  PASTE YOUR FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyChWqJ16uPq4GZUja74AfZzjtdKK8hF6lU",
   authDomain: "realtime-broker-sale.firebaseapp.com",

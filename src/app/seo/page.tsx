@@ -10,7 +10,7 @@ const GTM_ID         = "GTM-OOOOOOO" // GTM_ID
 const seo = {
     title: 'your website title',
     description: 'your web description',
-    image: 'IMAGE URL of your website',
+    image: 'IMAGE URL of your website',// รูปขนาด 4:3 ขนาดไม่เกิน 1000 px ควร 800-900 px
     site_name: 'your website site name',
     url: 'your homepage domain'
 }

@@ -1,8 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useRecoilState } from 'recoil';
-import { toyState } from '../store'
+import { toyState,loadState } from '../store'
 import { Toy } from '../interface'
 import { toast } from 'react-hot-toast'
+import {uuid} from 'uuidv4'
+
+import * as firebase from '@/method/firebase'
 
 enum GenreEnum {
   extream = "extream",
@@ -19,19 +22,23 @@ interface IFormInput {
 
 const Form = () => {
     const [ toys, setToyLists ] = useRecoilState(toyState)
+    const [_,setLoad ] = useRecoilState(loadState)
     const { register, handleSubmit } = useForm<IFormInput>()
-    const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
+    const onSubmit: SubmitHandler<IFormInput> = async  (data: any) => {
         console.log(data)
-        const getIDs = toys.length + 1
+        setLoad(true)
+        const getIDs = uuid()
         const parcel = {
             id: getIDs,
             ...data
         }
         let toyUpdate: Toy[] = [ parcel, ...toys ]
         setToyLists(toyUpdate)
+
+        await firebase.addNewToy(parcel)
+            setLoad(false)
         toast.success('add new toy to list')
     }   
-
     return (
         <div>
             <h2 className="mb-2 text-white">Add new item</h2>
