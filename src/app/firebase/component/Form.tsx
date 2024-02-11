@@ -27,7 +27,7 @@ const Form = () => {
     const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
         console.log(data)
         setLoad(true)
-        const getIDs = uuid()
+        const getIDs = uuid4()
         const parcel = {
             id: getIDs,
             ...data
