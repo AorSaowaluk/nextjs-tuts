@@ -1,30 +1,30 @@
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useRecoilState } from 'recoil';
-import { toyState,loadState } from '../store'
+import { toyState, loadState } from '../store'
 import { Toy } from '../interface'
 import { toast } from 'react-hot-toast'
-import {uuid} from 'uuidv4'
+import { uuid } from 'uuidv4'
 
 import * as firebase from '@/method/firebase'
 
 enum GenreEnum {
-  extream = "extream",
-  standard = "standard",
-  lovely = "lovely",
+    extream = "extream",
+    standard = "standard",
+    lovely = "lovely",
 }
 
 interface IFormInput {
-  name: string
-  genre: GenreEnum
-  price: number
-  image: string
+    name: string
+    genre: GenreEnum
+    price: number
+    image: string
 }
 
 const Form = () => {
-    const [ toys, setToyLists ] = useRecoilState(toyState)
-    const [_,setLoad ] = useRecoilState(loadState)
+    const [toys, setToyLists] = useRecoilState(toyState)
+    const [_, setLoad] = useRecoilState(loadState)
     const { register, handleSubmit } = useForm<IFormInput>()
-    const onSubmit: SubmitHandler<IFormInput> = async  (data: any) => {
+    const onSubmit: SubmitHandler<IFormInput> = async (data: any) => {
         console.log(data)
         setLoad(true)
         const getIDs = uuid()
@@ -32,13 +32,13 @@ const Form = () => {
             id: getIDs,
             ...data
         }
-        let toyUpdate: Toy[] = [ parcel, ...toys ]
+        let toyUpdate: Toy[] = [parcel, ...toys]
         setToyLists(toyUpdate)
 
         await firebase.addNewToy(parcel)
-            setLoad(false)
+        setLoad(false)
         toast.success('add new toy to list')
-    }   
+    }
     return (
         <div>
             <h2 className="mb-2 text-white">Add new item</h2>
@@ -63,7 +63,7 @@ const Form = () => {
                     <label className="block mb-1 text-xs">Image</label>
                     <input className="border h-6" {...register("image")} />
                 </div>
-                <input className="col-span-2 bg-blue-600 rounded-lg text-white h-8" type="submit"  />
+                <input className="col-span-2 bg-blue-600 rounded-lg text-white h-8" type="submit" />
             </form>
         </div>
     )
